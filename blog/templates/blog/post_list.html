@@ -1,0 +1,39 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+<section class="my-4">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-9">
+                {% for post in posts %}
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <a href="#" class="mt-0">{{ post.author }}</a>
+                                    <small class="text-muted">posté le {{ post.created_date|date:"d F Y" }}</small>
+                                    <hr>
+                                    <h6><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
+                                    <p>{{ post.content }}</p>
+                                    <h6>Catégorie : {{ post.category }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-lg-3">
+                <div class="list-group">
+                  <a href="{% url 'blog:post_list' %}" class="list-group-item list-group-item-action bg-color-list-group"> Catégories</a>
+                    {% for category in categories %}
+                    <a href="{% url 'blog:post_list_by_category' category.slug %}" class="list-group-item list-group-item-action">{{ category }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
