@@ -6,11 +6,22 @@
 <section class="my-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="{{ user.profil.image.url }}"  class="card-img-top img-responsive">
+                    <div class="card-body text-center">
+                        <h6>{{ user.first_name }} {{ user.last_name }}</h6>
+                        <h6>{{ user.email }}</h6>
+                        <h6>Création : {{ user.date_joined }}</h6>
+                        <h6>Dernière connexion : {{ user.last_login }}</h6>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-9">
                 <div class="card">
                     <div class="card-body">
-                        <h5>Profil</h5>
+                        <h6>{{ user.username }}</h6>
+                        <p>{{ user.profil.information }}</p>
                     </div>
                 </div>
             </div>
