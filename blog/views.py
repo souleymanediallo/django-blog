@@ -21,5 +21,6 @@ def post_list(request, category_slug=None):
 
 def post_detail(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
-    context = {'post': post}
+    categories = Category.objects.all()
+    context = {'post': post, 'categories': categories,}
     return render(request, "blog/post_detail.html", context)

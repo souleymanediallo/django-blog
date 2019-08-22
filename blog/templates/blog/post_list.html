@@ -16,7 +16,7 @@
                                     <hr>
                                     <h6><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
                                     <p>{{ post.content }}</p>
-                                    <h6>Catégorie : {{ post.category }}</h6>
+                                    <h6>Catégorie :<a href="{% url 'blog:post_list_by_category' post.category.slug %}"> {{ post.category }}</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -32,6 +32,7 @@
                     {% endfor %}
                 </div>
             </div>
+
         </div>
     </div>
 </section>

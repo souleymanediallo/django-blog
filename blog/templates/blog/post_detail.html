@@ -4,13 +4,30 @@
 <section class="my-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3"></div>
+
             <div class="col-lg-9">
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <h6>{{ post.title }}</h6>
-                        </div>
+                <div class="card my-2">
+                    <div class="card-body">
+                        <small class="text-muted">posté le {{ post.created_date|date:"d F Y" }}</small>
+                        <hr>
+                        <h6><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
+                        <p>{{ post.content }}</p>
+                        <h6>Catégorie :<a href="{% url 'blog:post_list' %}"> {{ post.category }}</a></h6>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="list-group">
+                  <a href="{% url 'blog:post_list' %}" class="list-group-item list-group-item-action bg-color-list-group"> Catégories</a>
+
+                    {% if category %}
+                    <a href="{% url 'blog:post_list_by_category' category.slug %}" class="list-group-item list-group-item-action">{{ category }}</a>
+                    {% endif %}
+
+                    {% for category in categories %}
+                    <a href="{% url 'blog:post_list_by_category' category.slug %}" class="list-group-item list-group-item-action">{{ category }}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
