@@ -13,12 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
 from django.contrib.auth import views as auth_views
+# import xadmin
+# xadmin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +30,10 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name="users/login.html"), name="login"),
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
     path('profil/', user_views.profil, name="profil"),
+    path('profil/update', user_views.profil_update, name="profil-update")
+
+    # url(r'xadmin/', include(xadmin.site.urls)),
+    # url(r'^xadmin/', include(xadmin.site.urls), name='xadmin'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
