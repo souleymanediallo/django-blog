@@ -13,8 +13,10 @@
                     <div class="card-body text-center">
                         <h6>{{ user.first_name }} {{ user.last_name }}</h6>
                         <h6>{{ user.email }}</h6>
-                        <h6>Création : {{ user.date_joined }}</h6>
-                        <h6>Dernière connexion : {{ user.last_login }}</h6>
+                        <h6>Création : {{ user.date_joined|date:"d F Y" }}</h6>
+                        <h6>Dernière connexion</h6>
+                        <small>Date : {{ user.last_login|date:"d F Y" }}</small><br>
+                        <small>Heure : {{ user.last_login|time:"H:i" }}</small>
                     </div>
                 </div>
             </div>
@@ -22,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h6>{{ user.username }}</h6>
-                        <p>{{ user.profil.information }}</p>
+                        <p>{{ user.profil.information|linebreaks }}</p>
                     </div>
                 </div>
             </div>
