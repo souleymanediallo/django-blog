@@ -13,5 +13,58 @@
   </div>
 
 </main>
-
+<section>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-3">
+        <h2>Last Posts</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-lg-6">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="media">
+              <img src="{{ post.author.profil.image.url }}" width="60" height="60" class="mr-3 rounded-circle">
+              <div class="media-body">
+                <h6><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
+                <p>{{ post.content|truncatechars:160 }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section id="services" class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <i class="fas fa-phone-volume fa-4x"></i>
+        <hr>
+        <h3>Service Free</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur hic dignissimos ratione ea quae.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <i class="fas fa-users fa-4x"></i>
+        <hr>
+        <h3>Professional Team</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur hic dignissimos ratione ea quae.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <i class="far fa-comments fa-4x"></i>
+        <hr>
+        <h3>Community Service</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur hic dignissimos ratione ea quae.</p>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}

@@ -4,7 +4,9 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    return render(request, "blog/index.html")
+    posts = Post.objects.all()[:4]
+    context = {'posts': posts}
+    return render(request, "blog/index.html", context)
 
 def about(request):
     return render(request, "blog/about.html")
