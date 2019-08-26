@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Post
 from django.core.paginator import Paginator
+from users.models import Profil
 
 # Create your views here.
 def home(request):
@@ -9,7 +10,9 @@ def home(request):
     return render(request, "blog/index.html", context)
 
 def about(request):
-    return render(request, "blog/about.html")
+    profils = Profil.objects.all()
+    context = {'profils': profils}
+    return render(request, "blog/about.html", context)
 
 
 def post_list(request, category_slug=None):
